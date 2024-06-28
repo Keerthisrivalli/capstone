@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+      body{
+        margin: 0;
+        padding: 0;
+        background-color: rgb(111, 175, 221);
+      }
+      nav{
+        color: white;
+        background-color: rgb(42, 95, 208);
+        width: 100vw;
+        box-sizing: border-box;
+        
+      }
+      .first ul  li{
+        padding: 4px;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 50px;
+      }
+      
+      .first{
+        display: flex;
+        width: 100%;
+      }
+      li{
+        text-decoration: none;
+        display: inline-block;
+        padding: 20px;
+        border: 1px solid rgb(17, 12, 12);
+      }
+    img{
+      height: 200px;
+      width: 200px;
+    }
+      
+    </style>
+</head>
+<body>
+  <nav>
+   <div class="first">
+    <h1 >Hello customer!! select your movie</h1>
+   
+  </div>
+</nav>
+   <ul class="movies">
+    <li><a href="#" data-movie="baby" onclick="handleImageClick(event)"><img src="baby1.jpg" alt="BABY"></a></li>
+    <li><a href="#" data-movie="thammudu" onclick="handleImageClick(event)"><img src="Thammudu.jpg" alt="BABY"></a></li>
+    <li><a href="#" data-movie="pokiri" onclick="handleImageClick(event)"><img src="pokiri.jpg" alt="BABY"></a></li>
+    <li><a href="#" data-movie="nenu sailaja" onclick="handleImageClick(event)"><img src="nenu.jpg" alt="PUSHPA"></a></li>
+    <li><a href="#" data-movie="rrr" onclick="handleImageClick(event)"><img src="rrr.jpg" alt="RRR"></a></li>
+    <li><a href="#" data-movie="bro" onclick="handleImageClick(event)"><img src="bro.jpg" alt="BABY"></a></li>
+    <li><a href="#" data-movie="og" onclick="handleImageClick(event)"><img src="og.jpg" alt="OG"></a></li>
+    <li><a href="#" data-movie="hari" onclick="handleImageClick(event)"><img src="hari.webp" alt="BABY"></a></li>
+    <li><a href="#" data-movie="godfather" onclick="handleImageClick(event)"><img src="godfather.jpg" alt="BABY"></a></li>
+    <li><a href="#" data-movie="nenu local" onclick="handleImageClick(event)"><img src="nenulocal.jpeg" alt="BABY"></a></li>
+    <li><a href="#" data-movie="syam singaroi" onclick="handleImageClick(event)"><img src="syam.jpeg" alt="BABY"></a></li>
+    <li><a href="#" data-movie="dj tillu" onclick="handleImageClick(event)"><img src="tillu.jpg" alt="BABY"></a></li>
+    <li><a href="#" data-movie="tholi prema" onclick="handleImageClick(event)"><img src="tholi.jpeg" alt="BABY"></a></li>
+    <li><a href="#" data-movie="mad" onclick="handleImageClick(event)"><img src="mad.jpg" alt="BABY"></a></li>
+    <li><a href="#" data-movie="vakil sab" onclick="handleImageClick(event)"><img src="vakil.jpeg" alt="BABY"></a></li>
+    <li><a href="#" data-movie="atreya" onclick="handleImageClick(event)"><img src="atreya.jpeg" alt="BABY"></a></li>
+    <li><a href="#" data-movie="antesundaraniki" onclick="handleImageClick(event)"><img src="ante.jpeg" alt="BABY"></a></li>
+    <li><a href="#" data-movie="sarkar vari pata" onclick="handleImageClick(event)"><img src="sarkar.jpeg" alt="BABY"></a></li>
+
+
+   </ul>
+</body>
+<script>
+  function handleImageClick(event) {
+    event.preventDefault();
+    const movieName = event.currentTarget.dataset.movie;
+    fetch('/search', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ moviename: movieName }),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to search');
+        }
+        return response.json();
+    })
+    .then(data => {
+        window.location.href = `/search?moviename=${encodeURIComponent(data.moviename)}`;
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert("Error occurred while searching");
+    });
+  }
+</script>
+</html>

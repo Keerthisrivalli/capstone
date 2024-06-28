@@ -1,0 +1,59 @@
+/* styles.css */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(120deg, #81c7e0, #67f4c5);
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background: rgb(244, 246, 215);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    padding: 30px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.container h2 {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.container label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+}
+
+.container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #80adde;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.container button:hover {
+    background-color: #0056b3;
+}
